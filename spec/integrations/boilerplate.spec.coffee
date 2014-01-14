@@ -1,13 +1,12 @@
 {expect} = require 'chai'
-childProcess = require 'child_process'
-path = require 'path'
-command = "node #{path.resolve __dirname, '../../bin/iced.js'}"
+command = require './command'
 
-describe 'iced boilerplate', ->
+describe 'iced boilerplate arguments', ->
+
   it 'should display the current version', (done) ->
     {version} = require '../../package.json'
 
-    childProcess.exec "#{command} --version", (err, stdout, stderr) ->
+    command '--version', (err, stdout, stderr) ->
       expect(err).to.be.falsy
       expect(stderr).to.be.falsy
       expect(stdout).to.contain version
@@ -15,7 +14,7 @@ describe 'iced boilerplate', ->
 
   it 'should display help text', (done) ->
 
-    childProcess.exec "#{command} --help", (err, stdout, stderr) ->
+    command '--help', (err, stdout, stderr) ->
       expect(err).to.be.falsy
       expect(stderr).to.be.falsy
       expect(stdout).to.match /glacier/i

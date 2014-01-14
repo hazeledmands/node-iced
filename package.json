@@ -7,7 +7,7 @@
   "scripts": {
     "build": "coffee --bare --compile --output . src/",
     "pretest": "npm run-script build",
-    "test": "mocha spec/**/*.spec.coffee --compilers coffee:coffee-script",
+    "test": "mocha spec/**/*.spec.coffee --compilers coffee:coffee-script --reporter spec",
     "prepublish": "npm run-script build"
   },
   "bin": {
@@ -30,7 +30,9 @@
   },
   "dependencies": {
     "aws-sdk": "~2.0.0-rc6",
-    "nopt": "~2.1.2"
+    "nopt": "~2.1.2",
+    "rc": "~0.3.2",
+    "request": "~2.31.0"
   },
   "devDependencies": {
     "chai": "~1.8.1",
