@@ -1,0 +1,39 @@
+{
+  "name": "iced",
+  "version": "0.1.0",
+  "description": "Simple backup tool that uses node to talk to Amazon Glacier",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "coffee --bare --compile --output . src/",
+    "pretest": "npm run-script build",
+    "test": "mocha spec/**/*.spec.coffee --compilers coffee:coffee-script",
+    "prepublish": "npm run-script build"
+  },
+  "bin": {
+    "iced": "node ./bin/iced.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/demands/node-iced"
+  },
+  "keywords": [
+    "glacier",
+    "aws",
+    "backups",
+    "cli"
+  ],
+  "author": "Max Edmands <me@maxedmands.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/demands/node-iced/issues"
+  },
+  "dependencies": {
+    "aws-sdk": "~2.0.0-rc6",
+    "nopt": "~2.1.2"
+  },
+  "devDependencies": {
+    "chai": "~1.8.1",
+    "mocha": "~1.17.0",
+    "coffee-script": "~1.6.3"
+  }
+}
