@@ -2,6 +2,7 @@
   "name": "iced",
   "version": "0.1.0",
   "description": "Simple backup tool that uses node to talk to Amazon Glacier",
+  "preferGlobal": true,
   "main": "lib/index.js",
   "scripts": {
     "build": "coffee --bare --compile --output . src/",
