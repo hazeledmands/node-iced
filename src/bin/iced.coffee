@@ -1,12 +1,12 @@
 pkg = require '../package.json'
 
 nopt = require 'nopt'
-request = require 'request'
+aws = require 'aws-sdk'
 
 knownOpts =
   version: Boolean
   help: Boolean
-  ping: Boolean
+  vaults: Boolean
 shortHands =
   v: ['--version']
   h: ['--help']
@@ -14,8 +14,7 @@ shortHands =
 args = nopt knownOpts, shortHands, process.argv
 
 rc = require('rc') pkg.name,
-  port: 8000
-  host: 'aws.amazon.com'
+  endpoint: null
 
 if args.version
   console.log pkg.version
@@ -25,10 +24,11 @@ if args.help
   console.log pkg.description
   process.exit 0
 
-if args.ping
-  request "http://#{rc.host}:#{rc.port}", (err, res, body) ->
-    if err
-      console.error err.toString()
-    else
-      console.log body
+if args.vaults
+  glacier = new aws.Glacier
+    endpoint: rc.endpoint
+    apiVersion: '2012-06-01'
+    region: 'us-west-1'
+  glacier.listVaults (err, data) ->
+    console.log vault.VaultName for vault in data.VaultList
     process.exit 0

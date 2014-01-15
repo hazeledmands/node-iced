@@ -1,7 +1,7 @@
 {expect} = require 'chai'
 command = require './command'
 
-describe 'iced boilerplate arguments', ->
+describe 'boilerplate arguments', ->
 
   it 'should display the current version', (done) ->
     {version} = require '../../package.json'

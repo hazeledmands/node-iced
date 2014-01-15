@@ -31,8 +31,7 @@
   "dependencies": {
     "aws-sdk": "~2.0.0-rc6",
     "nopt": "~2.1.2",
-    "rc": "~0.3.2",
-    "request": "~2.31.0"
+    "rc": "~0.3.2"
   },
   "devDependencies": {
     "chai": "~1.8.1",
