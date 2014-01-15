@@ -21,7 +21,16 @@ shortHands = {
 args = nopt(knownOpts, shortHands, process.argv);
 
 rc = require('rc')(pkg.name, {
-  endpoint: null
+  endpoint: null,
+  aws_access_key: null,
+  aws_access_key_id: null,
+  aws_region: null
+});
+
+aws.config.update({
+  accessKeyId: rc.aws_access_key_id,
+  secretAccessKey: rc.aws_access_key,
+  region: rc.aws_region
 });
 
 if (args.version) {
@@ -37,11 +46,13 @@ if (args.help) {
 if (args.vaults) {
   glacier = new aws.Glacier({
     endpoint: rc.endpoint,
-    apiVersion: '2012-06-01',
-    region: 'us-west-1'
+    apiVersion: '2012-06-01'
   });
   glacier.listVaults(function(err, data) {
     var vault, _i, _len, _ref;
+    if (err != null) {
+      console.error(err);
+    }
     _ref = data.VaultList;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       vault = _ref[_i];

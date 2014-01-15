@@ -16,6 +16,9 @@ module.exports = command = (args..., callback) ->
     protocol: 'http'
     hostname: SERVER_HOSTNAME
     port: SERVER_PORT
+  options.env.iced_aws_access_key ?= 'abc123'
+  options.env.iced_aws_access_key_id ?= 'xxxxxx'
+  options.env.iced_aws_region ?= 'hades-antipodes'
   childProcess.exec shellCommand, options, callback
 
 before ->
