@@ -50,9 +50,6 @@ if (args.vaults) {
   });
   glacier.listVaults(function(err, data) {
     var vault, _i, _len, _ref;
-    if (err != null) {
-      console.error(err);
-    }
     _ref = data.VaultList;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       vault = _ref[_i];
