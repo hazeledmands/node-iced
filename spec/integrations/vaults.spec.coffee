@@ -10,7 +10,7 @@ describe 'list vaults', ->
         Marker: 'test'
         VaultList: [ VaultName: 'Bird' ]
 
-  it 'should honor the iced_host and iced_port environment variables', (done) ->
+  it 'should list vaults in an amazon glacier account', (done) ->
     out = command '--vaults', (err, stdout, stderr) ->
       expect(err).to.be.falsy
       expect(stderr).to.be.falsy
