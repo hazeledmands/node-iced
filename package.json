@@ -5,13 +5,14 @@
   "preferGlobal": true,
   "main": "lib/index.js",
   "scripts": {
-    "build": "coffee --bare --compile --output . src/",
+    "build": "coffee --bare --compile --output . src/ && coffee build/scripts.coffee",
     "pretest": "npm run-script build",
     "test": "mocha spec/**/*.spec.coffee --compilers coffee:coffee-script --reporter spec",
     "prepublish": "npm run-script build"
   },
   "bin": {
-    "iced": "node ./bin/iced.js"
+    "iced": "./bin/iced",
+    "iced-vaults": "./bin/iced-vaults"
   },
   "repository": {
     "type": "git",
@@ -30,8 +31,8 @@
   },
   "dependencies": {
     "aws-sdk": "~2.0.0-rc6",
-    "nopt": "~2.1.2",
-    "rc": "~0.3.2"
+    "rc": "~0.3.2",
+    "helmsman": "~0.2.6"
   },
   "devDependencies": {
     "chai": "~1.8.1",

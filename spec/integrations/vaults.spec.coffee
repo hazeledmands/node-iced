@@ -11,7 +11,7 @@ describe 'list vaults', ->
         VaultList: [ VaultName: 'Bird' ]
 
   it 'should list vaults in an amazon glacier account', (done) ->
-    out = command '--vaults', (err, stdout, stderr) ->
+    out = command 'vaults', (err, stdout, stderr) ->
       expect(err).to.be.falsy
       expect(stderr).to.be.falsy
       expect(stdout).to.contain 'Bird'

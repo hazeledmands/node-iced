@@ -3,7 +3,7 @@ path = require 'path'
 url = require 'url'
 http = require 'http'
 
-shellCommandPrefix = "node #{path.resolve __dirname, '../../bin/iced.js'}"
+shellCommandPrefix = "#{path.resolve __dirname, '../../bin/iced'}"
 
 SERVER_HOSTNAME = 'localhost'
 SERVER_PORT = 10001
