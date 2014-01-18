@@ -32,11 +32,13 @@
   "dependencies": {
     "aws-sdk": "~2.0.0-rc6",
     "rc": "~0.3.2",
-    "helmsman": "~0.2.6"
+    "helmsman": "~0.2.6",
+    "nopt": "~2.1.2"
   },
   "devDependencies": {
     "chai": "~1.8.1",
     "mocha": "~1.17.0",
-    "coffee-script": "~1.6.3"
+    "coffee-script": "~1.6.3",
+    "concat-stream": "~1.4.1"
   }
 }
