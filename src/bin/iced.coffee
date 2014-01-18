@@ -24,7 +24,6 @@ aws.config.update
   secretAccessKey: rc.aws_access_key
   region: rc.aws_region
 
-
 if args.version
   console.log pkg.version
   process.exit 0
@@ -33,10 +32,12 @@ if args.help
   console.log pkg.description
   process.exit 0
 
+config =
+  apiVersion: '2012-06-01'
+config.endpoint = rc.endpoint if rc.endpoint
+glacier = new aws.Glacier config
+
 if args.vaults
-  glacier = new aws.Glacier
-    endpoint: rc.endpoint
-    apiVersion: '2012-06-01'
   glacier.listVaults (err, data) ->
     console.log vault.VaultName for vault in data.VaultList
     process.exit 0
