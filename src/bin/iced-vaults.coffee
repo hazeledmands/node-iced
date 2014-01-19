@@ -4,6 +4,7 @@ exports.command =
 if require.main is module
   glacier = require '../lib/glacier'
   columnify = require 'columnify'
+  filesize = require 'filesize'
   nopt = require 'nopt'
   knownOpts =
     create: String
@@ -29,7 +30,7 @@ if require.main is module
         name: vault.VaultName
         created: vault.CreationDate
         archives: vault.NumberOfArchives
-        size: vault.SizeInBytes
+        size: filesize(vault.SizeInBytes ? 0)
 
       console.log columnify(vaults)
       process.exit 0
