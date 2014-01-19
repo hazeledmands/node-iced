@@ -14,7 +14,8 @@
     "iced": "./bin/iced",
     "iced-vaults": "./bin/iced-vaults",
     "iced-jobs": "./bin/iced-jobs",
-    "iced-archive": "./bin/iced-archive"
+    "iced-archive": "./bin/iced-archive",
+    "iced-inventory": "./bin/iced-inventory"
   },
   "repository": {
     "type": "git",
