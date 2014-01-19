@@ -39,7 +39,7 @@ if (require.main === module) {
   }
   glacier.uploadArchive(params, function(err, data) {
     if (err != null) {
-      console.error(err);
+      console.error(err.message);
       process.exit(1);
     }
     console.log("uploaded to " + data.location);

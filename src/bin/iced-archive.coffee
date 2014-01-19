@@ -37,9 +37,11 @@ if require.main is module
     params.archiveDescription = parsedOptions.description
 
   glacier.uploadArchive params, (err, data) ->
+    
     if err?
-      console.error err
+      console.error err.message
       process.exit 1
+
     console.log "uploaded to #{data.location}"
     console.log data
     process.exit 0

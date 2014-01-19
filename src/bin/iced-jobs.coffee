@@ -14,5 +14,10 @@ if require.main is module
     process.exit 1
 
   glacier.listJobs {vaultName}, (err, data) ->
+
+    if err?
+      console.error err.message
+      process.exit 1
+
     console.log data
     process.exit 0
