@@ -29,4 +29,4 @@ for fname in fnames
   # add all scripts to package.json
   pkg.bin[sname] = "./bin/#{sname}"
 
-fs.writeFileSync path.resolve(__dirname, '../package.json'), JSON.stringify(pkg, null, '  ')
+fs.writeFileSync path.resolve(__dirname, '../package.json'), JSON.stringify(pkg, null, '  ') + '\n'
