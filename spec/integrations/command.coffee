@@ -42,9 +42,9 @@ before ->
       catch e
         body
 
-    if @server.response?
-      res.writeHead @server.response.status, 'Content-Type': 'application/json'
-      res.end JSON.stringify @server.response.data
+      if @server.response?
+        res.writeHead @server.response.status, 'Content-Type': 'application/json'
+        res.end JSON.stringify @server.response.data
 
 after ->
   @server.close()
