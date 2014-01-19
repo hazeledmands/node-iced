@@ -21,6 +21,10 @@ if require.main is module
         console.error err.message
         process.exit 1
 
+      if data.VaultList.length is 0
+        console.error "No vaults found"
+        process.exit 0
+
       vaults = data.VaultList.map (vault) ->
         name: vault.VaultName
         created: vault.CreationDate

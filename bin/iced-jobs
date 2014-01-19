@@ -26,6 +26,10 @@ if (require.main === module) {
       console.error(err.message);
       process.exit(1);
     }
+    if (data.JobList.length === 0) {
+      console.error("No jobs found");
+      process.exit(0);
+    }
     console.log(columnify(data.JobList));
     return process.exit(0);
   });

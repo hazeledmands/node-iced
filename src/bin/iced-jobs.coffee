@@ -20,5 +20,9 @@ if require.main is module
       console.error err.message
       process.exit 1
 
+    if data.JobList.length is 0
+      console.error "No jobs found"
+      process.exit 0
+
     console.log columnify(data.JobList)
     process.exit 0
