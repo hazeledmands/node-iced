@@ -3,6 +3,7 @@ exports.command =
 
 if require.main is module
   glacier = require '../lib/glacier'
+  columnify = require 'columnify'
   nopt = require 'nopt'
   knownOpts = {}
   shortHands = {}
@@ -19,5 +20,5 @@ if require.main is module
       console.error err.message
       process.exit 1
 
-    console.log data
+    console.log columnify(data.JobList)
     process.exit 0
