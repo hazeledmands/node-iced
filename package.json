@@ -35,7 +35,8 @@
     "aws-sdk": "~2.0.0-rc6",
     "rc": "~0.3.2",
     "helmsman": "~0.2.6",
-    "nopt": "~2.1.2"
+    "nopt": "~2.1.2",
+    "columnify": "~0.1.2"
   },
   "devDependencies": {
     "chai": "~1.8.1",

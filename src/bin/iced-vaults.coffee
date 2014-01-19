@@ -3,6 +3,7 @@ exports.command =
 
 if require.main is module
   glacier = require '../lib/glacier'
+  columnify = require 'columnify'
   nopt = require 'nopt'
   knownOpts =
     create: String
@@ -15,5 +16,16 @@ if require.main is module
       console.log "Created new vault #{parsedOptions.create}"
   else
     glacier.listVaults (err, data) ->
-      console.log vault.VaultName for vault in data.VaultList
+
+      if err?
+        console.error err.message
+        process.exit 1
+
+      vaults = data.VaultList.map (vault) ->
+        name: vault.VaultName
+        created: vault.CreationDate
+        archives: vault.NumberOfArchives
+        size: vault.SizeInBytes
+
+      console.log columnify(vaults)
       process.exit 0
