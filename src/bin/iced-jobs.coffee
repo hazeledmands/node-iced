@@ -11,7 +11,11 @@ if require.main is module
   vaultName = parsedOptions.argv.remain.shift()
 
   unless vaultName?
-    console.error "Usage:\niced jobs <vault>     list the jobs associated with <vault>"
+    console.error """
+    usage: iced jobs <vault>
+
+    List the jobs associated with <vault>
+    """
     process.exit 1
 
   glacier.listJobs {vaultName}, (err, data) ->

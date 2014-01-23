@@ -16,7 +16,7 @@ if (require.main === module) {
   parsedOptions = nopt(knownOpts, shortHands, process.argv);
   vaultName = parsedOptions.argv.remain.shift();
   if (vaultName == null) {
-    console.error("Usage:\niced jobs <vault>     list the jobs associated with <vault>");
+    console.error("usage: iced jobs <vault>\n\nList the jobs associated with <vault>");
     process.exit(1);
   }
   glacier.listJobs({
