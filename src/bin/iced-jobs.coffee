@@ -4,21 +4,36 @@ exports.command =
 if require.main is module
   glacier = require '../lib/glacier'
   columnify = require 'columnify'
+  moment = require 'moment'
+  humanize = require 'string-humanize'
   nopt = require 'nopt'
-  knownOpts = {}
-  shortHands = {}
+  knownOpts =
+    completed: Boolean
+    failed: Boolean
+  shortHands =
+    complete: ['--completed']
+    c: ['--completed']
+    fail: ['--failed']
+    f: ['--failed']
   parsedOptions = nopt(knownOpts, shortHands, process.argv)
   vaultName = parsedOptions.argv.remain.shift()
 
   unless vaultName?
     console.error """
-    usage: iced jobs <vault>
+    usage: iced jobs [--completed] <vault>
 
     List the jobs associated with <vault>
     """
     process.exit 1
 
-  glacier.listJobs {vaultName}, (err, data) ->
+  statuscode = if parsedOptions.failed
+      'Failed'
+    else if parsedOptions.completed
+      'Succeeded'
+    else
+      'InProgress'
+
+  glacier.listJobs {vaultName, statuscode}, (err, data) ->
 
     if err?
       console.error err.message
@@ -28,5 +43,12 @@ if require.main is module
       console.error "No jobs found"
       process.exit 0
 
-    console.log columnify(data.JobList)
+    jobs = data.JobList.map (job) ->
+      action: if job.Action is 'ArchiveRetrieval' then 'archive' else 'inventory'
+      status: if job.StatusMessage? then job.StatusMessage else humanize(job.StatusCode).toLowerCase()
+      started: moment(job.CreationDate).format('YYYY MMM D, hh:mma')
+      id: job.JobId
+      desc: job.JobDescription
+
+    console.log columnify(jobs)
     process.exit 0
