@@ -22,8 +22,8 @@ module.exports = command = (args..., callback) ->
   options.env.iced_aws_region ?= 'hades-antipodes'
   p = childProcess.exec shellCommand, options, callback
 
-  # p.stdout.pipe process.stdout
-  # p.stderr.pipe process.stderr
+  p.stdout.pipe process.stdout
+  p.stderr.pipe process.stderr
   p
 
 before ->
