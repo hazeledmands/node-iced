@@ -16,9 +16,13 @@ if require.main is module
 
   unless vaultName? and fileName?
     console.error """
-    usage: iced archive <vault> <file> [--description=<description>]
+    usage: iced archive <vault> <file> [--description=<description>] [--partsize=<filesize>]
 
-    Uploads <file> into <vault>, optionally with a <description>.
+    Uploads <file> into <vault>.
+
+    --description (-d) Assigns <description> to the archive
+    --partsize    (-p) Divides the file into multiple <filesize> parts and uploads each separately.
+                       Capable of parsing human-readable filesizes, like MB or KB. (Default value: 100MB)
     """
     process.exit 1
 
