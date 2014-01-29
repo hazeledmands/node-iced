@@ -39,7 +39,8 @@
     "nopt": "~2.1.2",
     "columnify": "~0.1.2",
     "filesize": "~2.0.0",
-    "moment": "~2.5.1"
+    "moment": "~2.5.1",
+    "string-humanize": "~1.0.0"
   },
   "devDependencies": {
     "chai": "~1.8.1",
